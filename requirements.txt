@@ -1,0 +1,15 @@
+# Foundry Local runtime SDK (on-device inference)
+foundry-local-sdk==2.0.1
+
+# Document loading
+markitdown[pdf]>=0.1.7
+pymupdf>=1.26          # fallback loader for PDFs MarkItDown cannot parse
+
+# Retrieval
+numpy>=2.0
+
+# Interface
+streamlit>=1.40
+
+# Testing
+pytest>=8.0

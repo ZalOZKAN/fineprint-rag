@@ -1,0 +1,40 @@
+# Corpus and database (never commit personal or copyrighted documents)
+data/documents/*
+!data/documents/.gitkeep
+data/*.db
+data/*.db-journal
+
+# Query logs
+logs/
+*.jsonl
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets (project is offline, but never commit these by accident)
+.env
+.env.*
+.streamlit/secrets.toml
+
+# Build artifacts
+build/
+dist/
+.ipynb_checkpoints/
+
+# Local working notes (kept out of the public repo)
+CLAUDE.md
+Log.md
+docs/PLAN.md
