@@ -1,13 +1,63 @@
-# Corpus and database (never commit personal or copyrighted documents)
-data/documents/*
-!data/documents/.gitkeep
+# Evaluation corpus and database (never commit personal or copyrighted
+# documents). This is the internship's own measured test corpus, not a
+# user's documents - those go through the app into data/library/, ignored
+# below. The sample corpus (public-domain U.S. federal regulation, see
+# LICENSES.md) is committed so the repo works on clone without a fetch step.
+# Each file is allow-listed by name so a stray .md dropped in the same folder
+# is not committed by accident.
+evaluation/corpus/*
+!evaluation/corpus/.gitkeep
+!evaluation/corpus/LICENSES.md
+# --- six-document core (scripts/fetch_public_corpus.py) ---
+!evaluation/corpus/nfip_flood_insurance_policy.md
+!evaluation/corpus/nfip_general_property_form.md
+!evaluation/corpus/nfip_condominium_form.md
+!evaluation/corpus/ftc_cooling_off_rule.md
+!evaluation/corpus/ftc_mail_order_rule.md
+!evaluation/corpus/osha_injury_recordkeeping.md
+# --- wider corpus (scripts/fetch_public_corpus.py --wide) ---
+!evaluation/corpus/reg_b_equal_credit_opportunity.md
+!evaluation/corpus/reg_dd_truth_in_savings.md
+!evaluation/corpus/reg_e_electronic_fund_transfers.md
+!evaluation/corpus/reg_m_consumer_leasing.md
+!evaluation/corpus/reg_x_real_estate_settlement.md
+!evaluation/corpus/fair_debt_collection_practices.md
+!evaluation/corpus/fair_credit_reporting.md
+!evaluation/corpus/ftc_used_car_rule.md
+!evaluation/corpus/ftc_credit_practices_rule.md
+!evaluation/corpus/ftc_holder_in_due_course.md
+!evaluation/corpus/ftc_negative_option_rule.md
+!evaluation/corpus/ftc_funeral_rule.md
+!evaluation/corpus/ftc_care_labeling_rule.md
+!evaluation/corpus/ftc_free_credit_reports.md
+!evaluation/corpus/ftc_identity_theft_red_flags.md
+!evaluation/corpus/fmla_family_medical_leave.md
+!evaluation/corpus/flsa_overtime_compensation.md
+!evaluation/corpus/flsa_white_collar_exemptions.md
+!evaluation/corpus/flsa_wage_deductions.md
+!evaluation/corpus/osha_inspections_citations.md
+!evaluation/corpus/nfip_general_provisions.md
+!evaluation/corpus/nfip_criteria_for_land_management.md
+!evaluation/corpus/nfip_eligible_communities.md
+!evaluation/corpus/nfip_appeals_map_changes.md
+!evaluation/corpus/nfip_rating.md
 data/*.db
 data/*.db-journal
+data/conversations.json
+
+# The Streamlit app's personal library: whatever a person using the app adds,
+# kept separate from the sample corpus above so a clone starts empty.
+data/library/
 
 # Query logs
 logs/
 *.jsonl
 *.log
+
+# Transient eval output. The named experiment files (results_qwen3-*.json,
+# results_hard.json, retrieval_*.json) are kept as evidence for the README and
+# ADRs; the default run's output is not.
+evaluation/results.json
 
 # Python
 __pycache__/
@@ -15,6 +65,7 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
 .venv/
 venv/
 
@@ -38,3 +89,9 @@ dist/
 CLAUDE.md
 Log.md
 docs/PLAN.md
+docs/DURUM.md
+docs/BAGLAM.md
+
+# Accumulated questions for the user (local only)
+QUESTIONS.md
+

@@ -8,6 +8,13 @@ pymupdf>=1.26          # fallback loader for PDFs MarkItDown cannot parse
 # Retrieval
 numpy>=2.0
 
+# Cross-encoder reranking. All three already ship as transitive dependencies of
+# foundry-local-sdk (its runtime is onnxruntime); they are pinned here because
+# rag/reranker.py now imports them directly. No torch, no transformers.
+onnxruntime>=1.20
+tokenizers>=0.20
+huggingface_hub>=0.25
+
 # Interface
 streamlit>=1.40
 
