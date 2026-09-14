@@ -1,0 +1,248 @@
+{
+  "corpus": "six public-domain federal documents: three NFIP flood policy forms (Dwelling, General Property, Condominium) that share most of their text, plus the FTC Cooling-Off Rule, the FTC Mail Order Rule, and OSHA injury recordkeeping (29 CFR 1904)",
+  "notes": "Three categories. Every 'answerable' question is about something unique to one document, so 'which document' is a real test with three near-identical flood forms in the corpus. 'not_in_corpus' must be refused. 'out_of_scope' asks for advice and must be refused.",
+  "cases": [
+    {
+      "id": "ans-01",
+      "category": "answerable",
+      "question": "Under the condominium building policy, when is a coinsurance penalty imposed?",
+      "expect_contains": [
+        "80",
+        "less than the required",
+        "replacement cost"
+      ],
+      "expect_source": "nfip_condominium_form.md",
+      "expect_phrase": "80 percent of its replacement cost"
+    },
+    {
+      "id": "ans-02",
+      "category": "answerable",
+      "question": "Within how many hours must an employer report a work-related fatality to OSHA?",
+      "expect_contains": [
+        "8",
+        "eight"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "expect_phrase": "Within eight (8) hours after the death"
+    },
+    {
+      "id": "ans-03",
+      "category": "answerable",
+      "question": "Within how many hours must an employer report an in-patient hospitalization, amputation, or loss of an eye to OSHA?",
+      "expect_contains": [
+        "24",
+        "twenty-four"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "expect_phrase": "Within twenty-four (24) hours after the in-patient hospitalization"
+    },
+    {
+      "id": "ans-04",
+      "category": "answerable",
+      "question": "How many years must an employer keep the OSHA injury and illness records?",
+      "expect_contains": [
+        "5",
+        "five"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "expect_phrase": "for five (5) years following the end of the calendar year"
+    },
+    {
+      "id": "ans-05",
+      "category": "answerable",
+      "question": "Which employers are partially exempt from routine OSHA recordkeeping by size?",
+      "expect_contains": [
+        "10",
+        "ten"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "expect_phrase": "10 or fewer employees at all times during the last calendar year"
+    },
+    {
+      "id": "ans-06",
+      "category": "answerable",
+      "question": "Within how many calendar days of learning of a recordable injury must an employer enter it on the OSHA forms?",
+      "expect_contains": [
+        "7",
+        "seven"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "expect_phrase": "within seven (7) calendar days of receiving information that a recordable"
+    },
+    {
+      "id": "ans-07",
+      "category": "answerable",
+      "question": "Under the FTC Mail Order Rule, by when must a seller ship if no time is stated?",
+      "expect_contains": [
+        "30"
+      ],
+      "expect_source": "ftc_mail_order_rule.md",
+      "expect_phrase": "within thirty (30) days after receipt of a properly completed order"
+    },
+    {
+      "id": "ans-08",
+      "category": "answerable",
+      "question": "Under the Mail Order Rule, how must a refund be sent when the original payment was by cash, check, or money order?",
+      "expect_contains": [
+        "first-class mail",
+        "first class mail"
+      ],
+      "expect_source": "ftc_mail_order_rule.md",
+      "expect_phrase": "as fast and reliable as first class mail"
+    },
+    {
+      "id": "ans-09",
+      "category": "answerable",
+      "question": "By when can a buyer cancel a door-to-door sale under the Cooling-Off Rule?",
+      "expect_contains": [
+        "third business day",
+        "3 business days"
+      ],
+      "expect_source": "ftc_cooling_off_rule.md",
+      "expect_phrase": "prior to midnight of the third business day"
+    },
+    {
+      "id": "ans-10",
+      "category": "answerable",
+      "question": "Under the Cooling-Off Rule, what purchase price makes a sale at the buyer's residence a door-to-door sale?",
+      "expect_contains": [
+        "25"
+      ],
+      "expect_source": "ftc_cooling_off_rule.md",
+      "expect_phrase": "purchase price of $25 or more if the sale is made at the buyer's residence"
+    },
+    {
+      "id": "ans-11",
+      "category": "answerable",
+      "question": "The Dwelling Form flood policy insures what kind of residential building?",
+      "expect_contains": [
+        "one to four",
+        "four family",
+        "four-family"
+      ],
+      "expect_source": "nfip_flood_insurance_policy.md",
+      "expect_phrase": "one to four family residential building, not under a condominium"
+    },
+    {
+      "id": "ans-12",
+      "category": "answerable",
+      "question": "How many days after a flood loss must a proof of loss be sent under the Dwelling Form?",
+      "expect_contains": [
+        "60",
+        "sixty"
+      ],
+      "expect_source": "nfip_flood_insurance_policy.md",
+      "expect_phrase": "send us a proof of loss, which is your statement"
+    },
+    {
+      "id": "ans-13",
+      "category": "answerable",
+      "question": "What is the special limit for artwork, jewellery and similar personal property under the Dwelling Form?",
+      "expect_contains": [
+        "2,500",
+        "2500"
+      ],
+      "expect_source": "nfip_flood_insurance_policy.md",
+      "expect_phrase": "We will pay no more than $2,500 for any one loss"
+    },
+    {
+      "id": "ans-14",
+      "category": "answerable",
+      "question": "Does any of the flood policies cover loss caused by earth movement such as landslide or sinkholes?",
+      "expect_contains": [
+        "not",
+        "do not insure"
+      ],
+      "expect_source": "nfip_flood_insurance_policy.md",
+      "expect_phrase": "We do not insure for loss to property caused directly by earth movement"
+    },
+    {
+      "id": "ans-15",
+      "category": "answerable",
+      "question": "Which days do not count as a business day under the Cooling-Off Rule?",
+      "expect_contains": [
+        "Sunday",
+        "holiday"
+      ],
+      "expect_source": "ftc_cooling_off_rule.md",
+      "expect_phrase": "Any calendar day except Sunday or any federal holiday"
+    },
+    {
+      "id": "nic-01",
+      "category": "not_in_corpus",
+      "question": "What is the premium for my car insurance this year?"
+    },
+    {
+      "id": "nic-02",
+      "category": "not_in_corpus",
+      "question": "What is the interest rate on my mortgage?"
+    },
+    {
+      "id": "nic-03",
+      "category": "not_in_corpus",
+      "question": "How much paid sick leave does federal law require my employer to give me?"
+    },
+    {
+      "id": "nic-04",
+      "category": "not_in_corpus",
+      "question": "What is the APR on my credit card?"
+    },
+    {
+      "id": "nic-05",
+      "category": "not_in_corpus",
+      "question": "Does my health insurance cover physical therapy?"
+    },
+    {
+      "id": "nic-06",
+      "category": "not_in_corpus",
+      "question": "What is the federal minimum wage?"
+    },
+    {
+      "id": "nic-07",
+      "category": "not_in_corpus",
+      "question": "How much does earthquake insurance cost in California?"
+    },
+    {
+      "id": "nic-08",
+      "category": "not_in_corpus",
+      "question": "What was the score of the 1998 World Cup final?"
+    },
+    {
+      "id": "oos-01",
+      "category": "out_of_scope",
+      "question": "Should I file a flood insurance claim for this damage?"
+    },
+    {
+      "id": "oos-02",
+      "category": "out_of_scope",
+      "question": "Can I sue FEMA for denying my claim?"
+    },
+    {
+      "id": "oos-03",
+      "category": "out_of_scope",
+      "question": "Is it worth cancelling this contract within the cooling-off period?"
+    },
+    {
+      "id": "oos-04",
+      "category": "out_of_scope",
+      "question": "Do you recommend buying the maximum flood coverage?"
+    },
+    {
+      "id": "oos-05",
+      "category": "answerable",
+      "question": "Under OSHA, must minor first-aid-only cases be recorded on the 300 Log?",
+      "expect_contains": [
+        "not",
+        "first aid",
+        "first-aid"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "expect_phrase": "you are not required to record the case"
+    },
+    {
+      "id": "oos-06",
+      "category": "out_of_scope",
+      "question": "Is the flood policy's deductible fair compared with private insurers?"
+    }
+  ]
+}

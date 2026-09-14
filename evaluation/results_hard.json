@@ -1,0 +1,299 @@
+{
+  "chat_model": "qwen3-4b",
+  "embedding_model": "qwen3-embedding-0.6b",
+  "context_chunks": 3,
+  "threshold": 0.6,
+  "rerank": true,
+  "runs": 1,
+  "modes": {
+    "dense": {
+      "runs": [
+        {
+          "overall_accuracy": 0.6,
+          "answer_accuracy": 0.6,
+          "refusal_accuracy": 0.0,
+          "gate_rate": 0.0,
+          "hit_rate": 0.9333333333333333,
+          "p50_ms": 61075.6962000014,
+          "p95_ms": 200587.92400000675
+        }
+      ],
+      "accuracy_spread": 0.0,
+      "cases": [
+        {
+          "id": "hard-01",
+          "category": "answerable",
+          "question": "Within how many hours must a workplace fatality be reported to OSHA?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "Within **8 hours** after the death of an employee due to a work-related incident, the fatality must be reported to OSHA.  \n\n**Source**: [1] osha_injury_recordkeeping.md, 1904.39(1).",
+          "citations": [
+            "osha_injury_recordkeeping.md, 1904.39 Reporting fatalities, hospitalizations, amputations, and losses of an eye as a result of work-related incidents to OSHA.",
+            "osha_injury_recordkeeping.md, 1904.7 General recording criteria."
+          ],
+          "best_dense_score": 0.7606,
+          "best_rerank_score": 8.766,
+          "retrieval_ms": 9211.1,
+          "generation_ms": 52856.7,
+          "reason": ""
+        },
+        {
+          "id": "hard-02",
+          "category": "answerable",
+          "question": "Within how many hours must an in-patient hospitalization be reported to OSHA?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "Under section [2], an in-patient hospitalization must be reported to OSHA within **twenty-four (24) hours**.",
+          "citations": [
+            "osha_injury_recordkeeping.md, 1904.39 Reporting fatalities, hospitalizations, amputations, and losses of an eye as a result of work-related incidents to OSHA."
+          ],
+          "best_dense_score": 0.7356,
+          "best_rerank_score": 8.166,
+          "retrieval_ms": 1303.1,
+          "generation_ms": 45202.6,
+          "reason": ""
+        },
+        {
+          "id": "hard-03",
+          "category": "answerable",
+          "question": "How many calendar days does an employer have to record an injury on the OSHA log?",
+          "outcome": "generation_failed",
+          "passed": false,
+          "retrieval_hit": true,
+          "answer_text": "The model returned an empty answer. This happens occasionally with a local model of this size. Please ask again.",
+          "citations": [
+            "osha_injury_recordkeeping.md, 1904.7 General recording criteria."
+          ],
+          "best_dense_score": 0.7689,
+          "best_rerank_score": 7.351,
+          "retrieval_ms": 1240.8,
+          "generation_ms": 158988.5,
+          "reason": "refused (generation_failed)"
+        },
+        {
+          "id": "hard-04",
+          "category": "answerable",
+          "question": "How long must OSHA injury and illness records be retained?",
+          "outcome": "answered",
+          "passed": false,
+          "retrieval_hit": true,
+          "answer_text": "OSHA injury and illness records must be retained for **30 years**.  \n\n**Source**: [3] osha_injury_recordkeeping.md, 1904.7 General recording criteria.",
+          "citations": [
+            "osha_injury_recordkeeping.md, 1904.30 Multiple business establishments.",
+            "osha_injury_recordkeeping.md, 1904.29 Forms.",
+            "osha_injury_recordkeeping.md, 1904.7 General recording criteria."
+          ],
+          "best_dense_score": 0.74,
+          "best_rerank_score": 6.97,
+          "retrieval_ms": 1294.4,
+          "generation_ms": 59781.3,
+          "reason": "missing expected fact ['5', 'five']"
+        },
+        {
+          "id": "hard-05",
+          "category": "answerable",
+          "question": "If a seller sets no shipping date, by when must a mail order be shipped?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "Under the FTC Mail Order Rule, if a seller sets no shipping date, the merchandise must be shipped within **30 days of the order date**.  \n\n**Source**: [2] FTC Mail Order Rule, 435.2.",
+          "citations": [
+            "ftc_negative_option_rule.md, 425.1 The rule.",
+            "ftc_mail_order_rule.md, 435.2 Mail, Internet, or telephone order sales."
+          ],
+          "best_dense_score": 0.7427,
+          "best_rerank_score": 4.453,
+          "retrieval_ms": 1402.3,
+          "generation_ms": 57662.2,
+          "reason": ""
+        },
+        {
+          "id": "hard-06",
+          "category": "answerable",
+          "question": "Within how many days must the renewal premium be received on the Dwelling Form flood policy?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The renewal premium must be received within **30 days** of the expiration date.  \n\n**Source:** [2] and [3], under \"VIII. General Conditions\" and \"VII. General Conditions\" respectively.",
+          "citations": [
+            "nfip_flood_insurance_policy.md, VII. General Conditions",
+            "nfip_condominium_form.md, VIII. General Conditions",
+            "nfip_general_property_form.md, VII. General Conditions"
+          ],
+          "best_dense_score": 0.6901,
+          "best_rerank_score": 1.932,
+          "retrieval_ms": 1272.9,
+          "generation_ms": 42566.6,
+          "reason": ""
+        },
+        {
+          "id": "hard-07",
+          "category": "answerable",
+          "question": "By which business day may a door-to-door buyer cancel under the Cooling-Off Rule?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "By midnight of the third business day following the transaction date, a door-to-door buyer may cancel under the Cooling-Off Rule. \n\n**Section**: [1] Source: ftc_cooling_off_rule.md, 429.1 The Rule.",
+          "citations": [
+            "ftc_cooling_off_rule.md, 429.1 The Rule.",
+            "ftc_cooling_off_rule.md, Notice of Cancellation",
+            "ftc_cooling_off_rule.md, 429.2 Effect on State laws and municipal ordinances."
+          ],
+          "best_dense_score": 0.6762,
+          "best_rerank_score": 2.986,
+          "retrieval_ms": 1286.1,
+          "generation_ms": 52201.9,
+          "reason": ""
+        },
+        {
+          "id": "hard-08",
+          "category": "answerable",
+          "question": "Within how many business days must a door-to-door seller refund after cancellation?",
+          "outcome": "answered",
+          "passed": false,
+          "retrieval_hit": true,
+          "answer_text": "Under the FTC Cooling Off Rule, a door-to-door seller must refund the buyer within **3 business days** after cancellation. This is explicitly stated in section [2] of the FTC Cooling Off Rule.",
+          "citations": [
+            "ftc_cooling_off_rule.md, Notice of Cancellation",
+            "ftc_cooling_off_rule.md, 429.0 Definitions."
+          ],
+          "best_dense_score": 0.6828,
+          "best_rerank_score": 4.007,
+          "retrieval_ms": 1534.4,
+          "generation_ms": 98640.5,
+          "reason": "missing expected fact ['10', 'ten']"
+        },
+        {
+          "id": "hard-09",
+          "category": "answerable",
+          "question": "Under the Dwelling Form, how many days after receiving the proof of loss is the loss payable?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "Under the Dwelling Form, the loss is payable **60 days after receiving the proof of loss**.  \n\n**Source**: [1], [2], [3] (all reference the 60-day period).",
+          "citations": [
+            "nfip_general_property_form.md, I. No Benefit to Bailee",
+            "nfip_flood_insurance_policy.md, I. No Benefit to Bailee",
+            "nfip_condominium_form.md, I. No Benefit to Bailee"
+          ],
+          "best_dense_score": 0.6907,
+          "best_rerank_score": 4.632,
+          "retrieval_ms": 1236.5,
+          "generation_ms": 51372.8,
+          "reason": ""
+        },
+        {
+          "id": "hard-10",
+          "category": "answerable",
+          "question": "Under the condominium building policy, at what percentage of replacement cost does the coinsurance penalty stop applying?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The coinsurance penalty stops applying when the actual amount of insurance carried is **at least 80 percent of its replacement cost**. \n\nThis threshold is explicitly stated in the context under **VII.B.1**. If the actual insurance meets or exceeds this 80% requirement, the coinsurance penalty does not apply.",
+          "citations": [
+            "nfip_condominium_form.md, VII. Coinsurance"
+          ],
+          "best_dense_score": 0.752,
+          "best_rerank_score": 4.262,
+          "retrieval_ms": 1336.3,
+          "generation_ms": 70372.9,
+          "reason": ""
+        },
+        {
+          "id": "hard-11",
+          "category": "answerable",
+          "question": "Which employers are partially exempt from routine OSHA recordkeeping because of their size?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "Employers with **10 or fewer employees** are partially exempt from routine OSHA recordkeeping because of their size.  \n\n**Source:** [2] osha_injury_recordkeeping.md, 1904.1.",
+          "citations": [
+            "osha_injury_recordkeeping.md, Non-Mandatory Appendix A to Subpart B of Part 1904\u2014Partially Exempt Industries",
+            "osha_injury_recordkeeping.md, 1904.1 Partial exemption for employers with 10 or fewer employees.",
+            "osha_injury_recordkeeping.md, 1904.2 Partial exemption for establishments in certain industries."
+          ],
+          "best_dense_score": 0.7613,
+          "best_rerank_score": 4.424,
+          "retrieval_ms": 1190.5,
+          "generation_ms": 55109.1,
+          "reason": ""
+        },
+        {
+          "id": "hard-12",
+          "category": "answerable",
+          "question": "Under the Mail Order Rule, how must a refund be delivered when payment was by cash or cheque?",
+          "outcome": "generation_failed",
+          "passed": false,
+          "retrieval_hit": true,
+          "answer_text": "The model returned an empty answer. This happens occasionally with a local model of this size. Please ask again.",
+          "citations": [
+            "ftc_mail_order_rule.md, 435.1 Definitions.",
+            "reg_e_electronic_fund_transfers.md, 1005.17 Requirements for Overdraft Services"
+          ],
+          "best_dense_score": 0.652,
+          "best_rerank_score": 1.979,
+          "retrieval_ms": 1568.7,
+          "generation_ms": 199019.2,
+          "reason": "refused (generation_failed)"
+        },
+        {
+          "id": "hard-13",
+          "category": "answerable",
+          "question": "The Dwelling Form insures which kind of residential building?",
+          "outcome": "answered",
+          "passed": false,
+          "retrieval_hit": true,
+          "answer_text": "The Dwelling Form insures a **single-family dwelling**, as defined in [3]. This includes either a single-family residential building or a single-family unit within a multi-family building, under specific floor area conditions. \n\nHowever, in [1] and [2], it is noted that the Dwelling Form may also be issued to a unit owner in a **condominium building**. This is under the condition that the Dwelling Form and the RCBAP (Residential Condominium Building Association Policy) do not exceed the combined benefit limit of $250,000. \n\nTherefore, the Dwelling Form insures **single-family dwellings**, which can be either a single-family residential building or a single-family unit within a multi-family",
+          "citations": [
+            "nfip_condominium_form.md, I. Agreement",
+            "nfip_flood_insurance_policy.md, I. Agreement",
+            "nfip_general_provisions.md, 59.1 Definitions."
+          ],
+          "best_dense_score": 0.5714,
+          "best_rerank_score": 5.216,
+          "retrieval_ms": 1180.5,
+          "generation_ms": 86130.7,
+          "reason": "missing expected fact ['one to four', 'four family', 'four-family']"
+        },
+        {
+          "id": "hard-14",
+          "category": "answerable",
+          "question": "What is the special limit for jewellery, art and furs under the Dwelling Form?",
+          "outcome": "not_in_corpus",
+          "passed": false,
+          "retrieval_hit": false,
+          "answer_text": "I could not find this in your documents. Try rephrasing the question, or check that the relevant document has been added to the library.",
+          "citations": [],
+          "best_dense_score": 0.5664,
+          "best_rerank_score": -0.355,
+          "retrieval_ms": 1404.3,
+          "generation_ms": 0.0,
+          "reason": "refused (not_in_corpus)"
+        },
+        {
+          "id": "hard-15",
+          "category": "answerable",
+          "question": "Under the flood policy, what is void from its inception if the property was never eligible for coverage?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "Under the flood policy, if the property was never eligible for coverage under the NFIP at the time of the initial application, the policy is void from its inception.  \n\n**Source**: [1] Source: nfip_eligible_communities.md, 62.5 Nullifications, cancellations, and premium refunds.",
+          "citations": [
+            "nfip_eligible_communities.md, 62.5 Nullifications, cancellations, and premium refunds.",
+            "nfip_general_property_form.md, VIII. Policy Nullification, Cancellation, and Non-Renewal",
+            "nfip_flood_insurance_policy.md, VIII. Policy Nullification, Cancellation, and Non-Renewal"
+          ],
+          "best_dense_score": 0.6889,
+          "best_rerank_score": 3.916,
+          "retrieval_ms": 1253.3,
+          "generation_ms": 66973.8,
+          "reason": ""
+        }
+      ]
+    }
+  },
+  "elapsed_s": 1125.0,
+  "golden_set": "golden_set_hard.json"
+}

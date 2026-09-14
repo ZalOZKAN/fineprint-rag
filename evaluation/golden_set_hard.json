@@ -1,0 +1,184 @@
+{
+  "corpus": "six federal documents: three near-identical NFIP flood forms, two FTC rules, OSHA recordkeeping",
+  "notes": "Deadline and figure collisions across documents. OSHA uses 8 hours, 24 hours, 7 calendar days, 5 years. The Mail Order Rule uses 30 days; so does flood policy renewal. The Cooling-Off Rule uses a third and a fifth business day; the Mail Order Rule uses a tenth. Getting these right needs the correct document and the correct clause among near neighbours.",
+  "cases": [
+    {
+      "id": "hard-01",
+      "category": "answerable",
+      "question": "Within how many hours must a workplace fatality be reported to OSHA?",
+      "expect_contains": [
+        "8",
+        "eight"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "collides_with": "OSHA also uses 24 hours for hospitalizations and amputations",
+      "expect_phrase": "Within eight (8) hours after the death"
+    },
+    {
+      "id": "hard-02",
+      "category": "answerable",
+      "question": "Within how many hours must an in-patient hospitalization be reported to OSHA?",
+      "expect_contains": [
+        "24",
+        "twenty-four"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "collides_with": "OSHA also uses 8 hours for fatalities",
+      "expect_phrase": "Within twenty-four (24) hours after the in-patient hospitalization"
+    },
+    {
+      "id": "hard-03",
+      "category": "answerable",
+      "question": "How many calendar days does an employer have to record an injury on the OSHA log?",
+      "expect_contains": [
+        "7",
+        "seven"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "collides_with": "OSHA also states 8 hours, 24 hours and 5 years elsewhere",
+      "expect_phrase": "within seven (7) calendar days of receiving information that a recordable"
+    },
+    {
+      "id": "hard-04",
+      "category": "answerable",
+      "question": "How long must OSHA injury and illness records be retained?",
+      "expect_contains": [
+        "5",
+        "five"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "collides_with": "7 days and 8 hours appear in adjacent sections",
+      "expect_phrase": "for five (5) years following the end of the calendar year"
+    },
+    {
+      "id": "hard-05",
+      "category": "answerable",
+      "question": "If a seller sets no shipping date, by when must a mail order be shipped?",
+      "expect_contains": [
+        "30"
+      ],
+      "expect_source": "ftc_mail_order_rule.md",
+      "collides_with": "the flood policy also uses a 30-day renewal window",
+      "expect_phrase": "within thirty (30) days after receipt of a properly completed order"
+    },
+    {
+      "id": "hard-06",
+      "category": "answerable",
+      "question": "Within how many days must the renewal premium be received on the Dwelling Form flood policy?",
+      "expect_contains": [
+        "30",
+        "thirty"
+      ],
+      "expect_source": "nfip_flood_insurance_policy.md",
+      "collides_with": "the Mail Order Rule also uses a 30-day shipment window",
+      "expect_phrase": "receive the payment of the appropriate renewal premium within 30 days"
+    },
+    {
+      "id": "hard-07",
+      "category": "answerable",
+      "question": "By which business day may a door-to-door buyer cancel under the Cooling-Off Rule?",
+      "expect_contains": [
+        "third business day",
+        "3 business days"
+      ],
+      "expect_source": "ftc_cooling_off_rule.md",
+      "collides_with": "the Mail Order Rule uses a tenth business day, the Cooling-Off Rule also a fifth",
+      "expect_phrase": "prior to midnight of the third business day"
+    },
+    {
+      "id": "hard-08",
+      "category": "answerable",
+      "question": "Within how many business days must a door-to-door seller refund after cancellation?",
+      "expect_contains": [
+        "10",
+        "ten"
+      ],
+      "expect_source": "ftc_cooling_off_rule.md",
+      "collides_with": "the same rule names a third and a fifth business day",
+      "expect_phrase": "within 10 business days after the receipt of such notice"
+    },
+    {
+      "id": "hard-09",
+      "category": "answerable",
+      "question": "Under the Dwelling Form, how many days after receiving the proof of loss is the loss payable?",
+      "expect_contains": [
+        "60",
+        "sixty"
+      ],
+      "expect_source": "nfip_flood_insurance_policy.md",
+      "collides_with": "the same form uses 60 days for the proof-of-loss submission too",
+      "expect_phrase": "Loss will be payable 60 days after we receive your proof of loss"
+    },
+    {
+      "id": "hard-10",
+      "category": "answerable",
+      "question": "Under the condominium building policy, at what percentage of replacement cost does the coinsurance penalty stop applying?",
+      "expect_contains": [
+        "80"
+      ],
+      "expect_source": "nfip_condominium_form.md",
+      "collides_with": "the Dwelling and General Property forms have no coinsurance section at all",
+      "expect_phrase": "80 percent of its replacement cost"
+    },
+    {
+      "id": "hard-11",
+      "category": "answerable",
+      "question": "Which employers are partially exempt from routine OSHA recordkeeping because of their size?",
+      "expect_contains": [
+        "10",
+        "ten"
+      ],
+      "expect_source": "osha_injury_recordkeeping.md",
+      "collides_with": "many numeric thresholds appear across the rule",
+      "expect_phrase": "10 or fewer employees at all times during the last calendar year"
+    },
+    {
+      "id": "hard-12",
+      "category": "answerable",
+      "question": "Under the Mail Order Rule, how must a refund be delivered when payment was by cash or cheque?",
+      "expect_contains": [
+        "first-class mail",
+        "first class mail"
+      ],
+      "expect_source": "ftc_mail_order_rule.md",
+      "collides_with": "the Cooling-Off Rule also governs refunds after cancellation",
+      "expect_phrase": "as fast and reliable as first class mail"
+    },
+    {
+      "id": "hard-13",
+      "category": "answerable",
+      "question": "The Dwelling Form insures which kind of residential building?",
+      "expect_contains": [
+        "one to four",
+        "four family",
+        "four-family"
+      ],
+      "expect_source": "nfip_flood_insurance_policy.md",
+      "collides_with": "the General Property Form covers other residential and non-residential buildings",
+      "expect_phrase": "one to four family residential building, not under a condominium"
+    },
+    {
+      "id": "hard-14",
+      "category": "answerable",
+      "question": "What is the special limit for jewellery, art and furs under the Dwelling Form?",
+      "expect_contains": [
+        "2,500",
+        "2500"
+      ],
+      "expect_source": "nfip_flood_insurance_policy.md",
+      "collides_with": "the same special limit appears in all three flood forms",
+      "expect_phrase": "We will pay no more than $2,500 for any one loss"
+    },
+    {
+      "id": "hard-15",
+      "category": "answerable",
+      "question": "Under the flood policy, what is void from its inception if the property was never eligible for coverage?",
+      "expect_contains": [
+        "policy"
+      ],
+      "expect_source": "nfip_flood_insurance_policy.md",
+      "collides_with": "the fraud clause also renders the policy void, nearby",
+      "expect_phrase": "void from its inception"
+    }
+  ]
+}

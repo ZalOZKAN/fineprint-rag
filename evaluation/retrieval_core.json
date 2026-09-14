@@ -1,0 +1,30 @@
+{
+  "golden_set": "golden_set.json",
+  "depth": 3,
+  "modes": {
+    "dense": {
+      "doc_hit_at_1": 0.8125,
+      "doc_hit_at_k": 1.0,
+      "passage_hit_at_1": 0.3125,
+      "passage_hit_at_k": 0.75,
+      "mrr": 0.8958333333333334,
+      "total": 16
+    },
+    "sparse": {
+      "doc_hit_at_1": 0.9375,
+      "doc_hit_at_k": 1.0,
+      "passage_hit_at_1": 0.5625,
+      "passage_hit_at_k": 0.625,
+      "mrr": 0.9583333333333334,
+      "total": 16
+    },
+    "hybrid": {
+      "doc_hit_at_1": 0.8125,
+      "doc_hit_at_k": 1.0,
+      "passage_hit_at_1": 0.4375,
+      "passage_hit_at_k": 0.625,
+      "mrr": 0.90625,
+      "total": 16
+    }
+  }
+}

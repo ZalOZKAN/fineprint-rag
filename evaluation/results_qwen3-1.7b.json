@@ -1,0 +1,501 @@
+{
+  "chat_model": "qwen3-1.7b",
+  "embedding_model": "qwen3-embedding-0.6b",
+  "context_chunks": 3,
+  "threshold": 0.42,
+  "runs": 1,
+  "modes": {
+    "hybrid": {
+      "runs": [
+        {
+          "overall_accuracy": 0.9655172413793104,
+          "answer_accuracy": 0.9333333333333333,
+          "refusal_accuracy": 1.0,
+          "gate_rate": 0.8571428571428571,
+          "hit_rate": 1.0,
+          "p50_ms": 16425.660800014157,
+          "p95_ms": 43280.167300021276
+        }
+      ],
+      "accuracy_spread": 0.0,
+      "cases": [
+        {
+          "id": "ans-01",
+          "category": "answerable",
+          "question": "What is the excess on the home insurance policy?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The excess on the home insurance policy is **500 EUR** for every claim. For claims arising from the escape of water, the excess is **1,000 EUR**.",
+          "citations": [
+            "home_insurance_policy.md, Buildings and Contents Insurance Policy",
+            "home_insurance_policy.md, 2. Excess",
+            "mobile_service_agreement.md, 3. Roaming"
+          ],
+          "best_dense_score": 0.5815,
+          "retrieval_ms": 8388.2,
+          "generation_ms": 34892.0,
+          "reason": ""
+        },
+        {
+          "id": "ans-02",
+          "category": "answerable",
+          "question": "How much is the excess for escape of water claims?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The excess for claims arising from escape of water is **1,000 EUR**. \n\nThis figure is explicitly stated in the context provided.",
+          "citations": [
+            "home_insurance_policy.md, 2. Excess",
+            "home_insurance_policy.md, 1. What this policy covers",
+            "mobile_service_agreement.md, 2. Data allowance and excess use"
+          ],
+          "best_dense_score": 0.8278,
+          "retrieval_ms": 1770.6,
+          "generation_ms": 26841.2,
+          "reason": ""
+        },
+        {
+          "id": "ans-03",
+          "category": "answerable",
+          "question": "How long is the cooling off period for the insurance policy?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The cooling off period for the insurance policy is **14 days**. This period allows the policyholder to cancel the policy without any claims being made.",
+          "citations": [
+            "home_insurance_policy.md, Buildings and Contents Insurance Policy",
+            "home_insurance_policy.md, 5. Cancellation",
+            "mobile_service_agreement.md, 5. Early termination charge"
+          ],
+          "best_dense_score": 0.663,
+          "retrieval_ms": 1527.9,
+          "generation_ms": 21100.8,
+          "reason": ""
+        },
+        {
+          "id": "ans-04",
+          "category": "answerable",
+          "question": "How many days do I have to notify a claim?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The user has 30 days to notify a claim. \n\nSource: home_insurance_policy.md, 4. Making a claim  \n\"Notify us within 30 days of becoming aware of the loss or damage.\"",
+          "citations": [
+            "home_insurance_policy.md, 4. Making a claim",
+            "appliance_warranty.md, 4. Making a warranty claim",
+            "home_insurance_policy.md, 5. Cancellation"
+          ],
+          "best_dense_score": 0.6692,
+          "retrieval_ms": 1541.4,
+          "generation_ms": 27010.5,
+          "reason": ""
+        },
+        {
+          "id": "ans-05",
+          "category": "answerable",
+          "question": "How long can the property be unoccupied before cover stops?",
+          "outcome": "answered",
+          "passed": false,
+          "retrieval_hit": true,
+          "answer_text": "The context provided does not contain any information about the unoccupancy period before coverage stops. \n\nTherefore, the answer is: **The unoccupancy period before coverage stops is not specified in the provided context.**",
+          "citations": [
+            "home_insurance_policy.md, 3. What is not covered",
+            "home_insurance_policy.md, Buildings and Contents Insurance Policy",
+            "home_insurance_policy.md, 5. Cancellation"
+          ],
+          "best_dense_score": 0.5739,
+          "retrieval_ms": 1507.9,
+          "generation_ms": 44667.5,
+          "reason": "missing expected fact ['60']"
+        },
+        {
+          "id": "ans-06",
+          "category": "answerable",
+          "question": "What notice period applies to ending the tenancy?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The notice period for ending the tenancy is **30 days**. This is explicitly stated in the context provided.",
+          "citations": [
+            "residential_lease.md, 8. Notice period",
+            "residential_lease.md, 1. Term",
+            "residential_lease.md, Residential Tenancy Agreement"
+          ],
+          "best_dense_score": 0.7822,
+          "retrieval_ms": 1531.4,
+          "generation_ms": 21892.0,
+          "reason": ""
+        },
+        {
+          "id": "ans-07",
+          "category": "answerable",
+          "question": "Can the tenant sublet the property?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The Tenant may not sublet the whole or any part of the property, nor assign this tenancy, without the prior written consent of the Landlord. Consent shall not be unreasonably withheld where the proposed occupier passes the referencing checks used at the start of this tenancy.",
+          "citations": [
+            "residential_lease.md, 5. Subletting",
+            "residential_lease.md, 4. Tenant obligations",
+            "residential_lease.md, 9. Early termination"
+          ],
+          "best_dense_score": 0.6802,
+          "retrieval_ms": 1604.4,
+          "generation_ms": 31489.5,
+          "reason": ""
+        },
+        {
+          "id": "ans-08",
+          "category": "answerable",
+          "question": "How much is the deposit under the lease?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The deposit under the lease is **1,875 EUR**. This amount equals one and a half months of rent.",
+          "citations": [
+            "residential_lease.md, 3. Deposit",
+            "residential_lease.md, Residential Tenancy Agreement",
+            "residential_lease.md, 2. Rent"
+          ],
+          "best_dense_score": 0.5695,
+          "retrieval_ms": 1880.1,
+          "generation_ms": 23660.9,
+          "reason": ""
+        },
+        {
+          "id": "ans-09",
+          "category": "answerable",
+          "question": "How quickly must the landlord respond to an emergency repair?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "under Cancellation\n\nThe Landlord must respond to an emergency repair within 24 hours.",
+          "citations": [
+            "residential_lease.md, 7. Repairs",
+            "residential_lease.md, 6. Landlord obligations",
+            "residential_lease.md, 4. Tenant obligations"
+          ],
+          "best_dense_score": 0.7455,
+          "retrieval_ms": 1943.5,
+          "generation_ms": 35679.2,
+          "reason": ""
+        },
+        {
+          "id": "ans-10",
+          "category": "answerable",
+          "question": "How long is the appliance warranty period?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The appliance warranty period is **24 months** from the date of purchase, as stated in the document.",
+          "citations": [
+            "appliance_warranty.md, 1. Warranty period",
+            "appliance_warranty.md, Limited Product Warranty",
+            "appliance_warranty.md, 2. What is covered"
+          ],
+          "best_dense_score": 0.5867,
+          "retrieval_ms": 1519.3,
+          "generation_ms": 31755.2,
+          "reason": ""
+        },
+        {
+          "id": "ans-11",
+          "category": "answerable",
+          "question": "Are filters and batteries covered by the warranty?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "No, filters and batteries are **not covered** by the warranty. \n\nThis is explicitly stated in the context:  \n- **\"What is not covered\"** section lists filters as one of the items not covered.  \n- **\"What is covered\"** section also notes that consumable parts, including filters and batteries, are **not covered** under warranty.",
+          "citations": [
+            "appliance_warranty.md, 3. What is not covered",
+            "appliance_warranty.md, 1. Warranty period",
+            "appliance_warranty.md, 2. What is covered"
+          ],
+          "best_dense_score": 0.7117,
+          "retrieval_ms": 1513.1,
+          "generation_ms": 33276.8,
+          "reason": ""
+        },
+        {
+          "id": "ans-12",
+          "category": "answerable",
+          "question": "What is charged for data used above the monthly allowance?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The data used above the monthly allowance is charged at **3 EUR per GB**, rounded up to the next whole GB.",
+          "citations": [
+            "mobile_service_agreement.md, 2. Data allowance and excess use",
+            "mobile_service_agreement.md, 1. Monthly charge",
+            "mobile_service_agreement.md, 3. Roaming"
+          ],
+          "best_dense_score": 0.7811,
+          "retrieval_ms": 1624.9,
+          "generation_ms": 29143.0,
+          "reason": ""
+        },
+        {
+          "id": "ans-13",
+          "category": "answerable",
+          "question": "What is the reconnection fee after suspension for non payment?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The reconnection fee after suspension for non-payment is **15 EUR**.",
+          "citations": [
+            "mobile_service_agreement.md, 6. Suspension",
+            "gym_membership_terms.md, 3. Cancellation",
+            "gym_membership_terms.md, 2. Fees"
+          ],
+          "best_dense_score": 0.7853,
+          "retrieval_ms": 1095.1,
+          "generation_ms": 12730.3,
+          "reason": ""
+        },
+        {
+          "id": "ans-14",
+          "category": "answerable",
+          "question": "How much notice is needed to cancel a rolling gym membership?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "Under Cancellation:  \nA rolling membership may be cancelled by giving one full calendar month written notice. Notice given part way through a month takes effect at the end of the following month.",
+          "citations": [
+            "gym_membership_terms.md, 3. Cancellation",
+            "gym_membership_terms.md, Membership Terms and Conditions",
+            "gym_membership_terms.md, 1. Membership types"
+          ],
+          "best_dense_score": 0.7297,
+          "retrieval_ms": 803.8,
+          "generation_ms": 15621.8,
+          "reason": ""
+        },
+        {
+          "id": "ans-15",
+          "category": "answerable",
+          "question": "How far must I move to cancel the gym membership on relocation grounds?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": true,
+          "answer_text": "The context does not explicitly state the requirement for moving more than 25 kilometers from the nearest club to cancel the gym membership on relocation grounds. \n\nTherefore, the answer is: The context does not provide the specific requirement for moving more than 25 kilometers from the nearest club to cancel the gym membership on relocation grounds.",
+          "citations": [
+            "gym_membership_terms.md, 4. Freezing and medical cancellation",
+            "gym_membership_terms.md, Membership Terms and Conditions",
+            "gym_membership_terms.md, 3. Cancellation"
+          ],
+          "best_dense_score": 0.6146,
+          "retrieval_ms": 899.0,
+          "generation_ms": 31423.1,
+          "reason": ""
+        },
+        {
+          "id": "nic-01",
+          "category": "not_in_corpus",
+          "question": "What is my car insurance premium for next year?",
+          "outcome": "not_in_corpus",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I could not find this in your documents. Try rephrasing the question, or check that the relevant document has been added to the library.",
+          "citations": [],
+          "best_dense_score": 0.4197,
+          "retrieval_ms": 803.8,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "nic-02",
+          "category": "not_in_corpus",
+          "question": "How much did I pay in income tax last year?",
+          "outcome": "not_in_corpus",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I could not find this in your documents. Try rephrasing the question, or check that the relevant document has been added to the library.",
+          "citations": [],
+          "best_dense_score": 0.3634,
+          "retrieval_ms": 729.3,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "nic-03",
+          "category": "not_in_corpus",
+          "question": "What is the interest rate on my mortgage?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "The context provided does not contain information about mortgage interest rates. Therefore, the answer is that the context does not contain the required information.",
+          "citations": [
+            "residential_lease.md, 2. Rent",
+            "gym_membership_terms.md, 1. Membership types",
+            "mobile_service_agreement.md, 1. Monthly charge"
+          ],
+          "best_dense_score": 0.4662,
+          "retrieval_ms": 684.8,
+          "generation_ms": 15297.0,
+          "reason": "model declined in prose, the gate did not fire"
+        },
+        {
+          "id": "nic-04",
+          "category": "not_in_corpus",
+          "question": "When does my passport expire?",
+          "outcome": "not_in_corpus",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I could not find this in your documents. Try rephrasing the question, or check that the relevant document has been added to the library.",
+          "citations": [],
+          "best_dense_score": 0.3762,
+          "retrieval_ms": 785.1,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "nic-05",
+          "category": "not_in_corpus",
+          "question": "What is the cancellation policy for my flight booking?",
+          "outcome": "answered",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "The provided context does not contain information about the cancellation policy for flight bookings. Therefore, the answer is: \n\n**Section:** under Cancellation  \n**Answer:** The provided context does not contain information about the cancellation policy for flight bookings.",
+          "citations": [
+            "home_insurance_policy.md, 5. Cancellation",
+            "gym_membership_terms.md, 3. Cancellation",
+            "gym_membership_terms.md, 4. Freezing and medical cancellation"
+          ],
+          "best_dense_score": 0.6064,
+          "retrieval_ms": 735.7,
+          "generation_ms": 20019.3,
+          "reason": "model declined in prose, the gate did not fire"
+        },
+        {
+          "id": "nic-06",
+          "category": "not_in_corpus",
+          "question": "Who is the beneficiary named in my life insurance?",
+          "outcome": "not_in_corpus",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I could not find this in your documents. Try rephrasing the question, or check that the relevant document has been added to the library.",
+          "citations": [],
+          "best_dense_score": 0.3754,
+          "retrieval_ms": 752.1,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "nic-07",
+          "category": "not_in_corpus",
+          "question": "What was the score of the 1998 World Cup final?",
+          "outcome": "not_in_corpus",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I could not find this in your documents. Try rephrasing the question, or check that the relevant document has been added to the library.",
+          "citations": [],
+          "best_dense_score": 0.1797,
+          "retrieval_ms": 709.7,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "nic-08",
+          "category": "not_in_corpus",
+          "question": "How many days of annual leave does my employment contract give me?",
+          "outcome": "not_in_corpus",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I could not find this in your documents. Try rephrasing the question, or check that the relevant document has been added to the library.",
+          "citations": [],
+          "best_dense_score": 0.3784,
+          "retrieval_ms": 701.0,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "oos-01",
+          "category": "out_of_scope",
+          "question": "Should I cancel my home insurance policy?",
+          "outcome": "advice_refused",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I can only tell you what your documents say, not what you should do. Ask me what a document states about this, or consult a qualified adviser.",
+          "citations": [],
+          "best_dense_score": 0.0,
+          "retrieval_ms": 0.0,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "oos-02",
+          "category": "out_of_scope",
+          "question": "Can I sue my landlord for not fixing the heating?",
+          "outcome": "advice_refused",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I can only tell you what your documents say, not what you should do. Ask me what a document states about this, or consult a qualified adviser.",
+          "citations": [],
+          "best_dense_score": 0.0,
+          "retrieval_ms": 0.0,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "oos-03",
+          "category": "out_of_scope",
+          "question": "Do you recommend the fixed term gym membership?",
+          "outcome": "advice_refused",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I can only tell you what your documents say, not what you should do. Ask me what a document states about this, or consult a qualified adviser.",
+          "citations": [],
+          "best_dense_score": 0.0,
+          "retrieval_ms": 0.0,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "oos-04",
+          "category": "out_of_scope",
+          "question": "Is it legal to sublet without telling the landlord?",
+          "outcome": "advice_refused",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I can only tell you what your documents say, not what you should do. Ask me what a document states about this, or consult a qualified adviser.",
+          "citations": [],
+          "best_dense_score": 0.0,
+          "retrieval_ms": 0.0,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "oos-05",
+          "category": "out_of_scope",
+          "question": "What would you do about this early termination charge?",
+          "outcome": "advice_refused",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I can only tell you what your documents say, not what you should do. Ask me what a document states about this, or consult a qualified adviser.",
+          "citations": [],
+          "best_dense_score": 0.0,
+          "retrieval_ms": 0.0,
+          "generation_ms": 0.0,
+          "reason": ""
+        },
+        {
+          "id": "oos-06",
+          "category": "out_of_scope",
+          "question": "Should I accept the warranty repair or ask for a refund?",
+          "outcome": "advice_refused",
+          "passed": true,
+          "retrieval_hit": null,
+          "answer_text": "I can only tell you what your documents say, not what you should do. Ask me what a document states about this, or consult a qualified adviser.",
+          "citations": [],
+          "best_dense_score": 0.0,
+          "retrieval_ms": 0.0,
+          "generation_ms": 0.0,
+          "reason": ""
+        }
+      ]
+    }
+  },
+  "elapsed_s": 492.0,
+  "golden_set": "golden_set.json"
+}
