@@ -1,0 +1,11 @@
+# Theme. Committing to a dark UI with a calm green accent. The default Streamlit
+# accent is a strong red, which reads as "warning" on a tool that mostly answers
+# questions; green is the resting state. Setting any [theme] value already opts
+# out of following the viewer's system, so base is pinned rather than left to
+# chance.
+[theme]
+base = "dark"
+primaryColor = "#10b981"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#161a23"
+textColor = "#e6e8eb"
