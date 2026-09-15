@@ -823,6 +823,24 @@ def record_turn(turn: dict) -> None:
 
 # --- sidebar ----------------------------------------------------------------
 
+# The three sidebar panels (Documents, How Fineprint works, Advanced) behave
+# as an accordion: opening one closes the others, so the sidebar never grows
+# to show two long panels at once.
+_ACCORDION_KEYS = ("exp_documents", "exp_how_it_works", "exp_advanced")
+
+
+def _accordion_close_others(opened_key: str) -> None:
+    """on_change callback: when one panel opens, collapse the rest.
+
+    Runs after Streamlit has already written the new (just-toggled) value
+    into st.session_state[opened_key], so a True here means the user just
+    expanded this panel.
+    """
+    if st.session_state.get(opened_key):
+        for key in _ACCORDION_KEYS:
+            if key != opened_key:
+                st.session_state[key] = False
+
 
 def render_sidebar(
     conn, index, embedder, reranker=None
@@ -928,11 +946,17 @@ def render_sidebar(
         with st.container(key="sidebarfoot"):
             doc_count = db.count_documents(conn)
             with st.expander(
-                f"{doc_count} document(s)" if doc_count else "Documents"
+                f"{doc_count} document(s)" if doc_count else "Documents",
+                key="exp_documents", on_change=_accordion_close_others,
+                args=("exp_documents",),
             ):
                 render_document_panel(conn, index, embedder, reranker)
 
-            with st.expander("How Fineprint works"):
+            with st.expander(
+                "How Fineprint works",
+                key="exp_how_it_works", on_change=_accordion_close_others,
+                args=("exp_how_it_works",),
+            ):
                 st.caption(
                     "It answers questions about the loaded documents, quoting "
                     "the clause the answer comes from. If nothing in the "
@@ -941,7 +965,11 @@ def render_sidebar(
                     "this machine, so an answer usually takes 30 to 60 seconds."
                 )
 
-            with st.expander("Advanced"):
+            with st.expander(
+                "Advanced",
+                key="exp_advanced", on_change=_accordion_close_others,
+                args=("exp_advanced",),
+            ):
                 mode_values = [item.value for item in Mode]
                 mode = Mode(
                     st.selectbox(
