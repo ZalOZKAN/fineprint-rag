@@ -777,23 +777,37 @@ def _load_sample_corpus(conn, index, embedder, reranker=None) -> None:
 
 
 def _remove_document(conn, index, filename: str, reranker=None) -> None:
-    """Delete one document from the personal library."""
+    """Delete one document from the personal library.
+
+    The file on disk is removed along with the database row. Leaving it
+    behind meant the next upload silently re-ingested it: ingest_directory
+    walks the whole library folder, and a file with no matching row just
+    looks like a new document to it.
+    """
     if db.delete_document(conn, filename):
         db.rebuild_fts(conn)
         conn.commit()
         index.refresh()
         auto_threshold.calibrate_and_store(conn, reranker)
+        (config.LIBRARY_DIR / filename).unlink(missing_ok=True)
     st.toast(f"Removed {filename}")
     st.rerun()
 
 
 def _clear_library(conn, index) -> None:
-    """Delete every document from the personal library."""
+    """Delete every document from the personal library, files included.
+
+    Same reasoning as _remove_document: a file left on disk after its row is
+    gone is indistinguishable from a new upload, and the next ingest silently
+    re-embeds it.
+    """
     removed = db.delete_all_documents(conn)
     db.rebuild_fts(conn)
     conn.commit()
     index.refresh()
     db.delete_meta(conn, db.META_RERANK_THRESHOLD)
+    for path in loaders.discover_documents(config.LIBRARY_DIR):
+        path.unlink(missing_ok=True)
     st.session_state.pop("confirm_clear", None)
     st.toast(f"Removed {removed} document(s). Your library is empty again.")
     st.rerun()
