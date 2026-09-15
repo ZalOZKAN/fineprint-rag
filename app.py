@@ -78,6 +78,9 @@ STYLE = """
 .fp-hero { text-align: center; margin: 3.2rem 0 2.2rem; }
 .fp-hero b { display: block; font-size: 1.95rem; font-weight: 650;
     letter-spacing: -0.015em; }
+/* the headline b is the block; a b inside the sub-line is just emphasis */
+.fp-hero span b { display: inline; font-size: inherit; font-weight: 700;
+    opacity: 1; }
 .fp-hero span { display: block; margin-top: 0.65rem; font-size: 1.02rem;
     opacity: 0.55; line-height: 1.55; }
 
@@ -751,10 +754,24 @@ def _load_sample_corpus(conn, index, embedder, reranker=None) -> None:
     but writes into the app's own database, so it never touches the eval corpus
     or its database, and can be undone with "Clear all documents" below.
     """
-    with st.spinner("Loading the sample corpus..."):
-        report = ingest.ingest_directory(conn, embedder, config.EVAL_CORPUS_DIR)
-        index.refresh()
-        auto_threshold.calibrate_and_store(conn, reranker)
+    # Embedding 31 documents on the CPU runs for minutes. A bare spinner for
+    # that long reads as a hung button, so the progress is shown document by
+    # document and the wait is stated up front.
+    # Short labels: this also runs from the sidebar, where there is no room.
+    bar = st.progress(0.0, text="Indexing locally, a few minutes...")
+
+    def show(done: int, total: int, filename: str) -> None:  # noqa: ARG001
+        share = done / total if total else 1.0
+        label = f"{done} / {total} documents"
+        bar.progress(share, text=label)
+
+    report = ingest.ingest_directory(
+        conn, embedder, config.EVAL_CORPUS_DIR, on_progress=show
+    )
+    bar.progress(1.0, text="Calibrating the threshold...")
+    index.refresh()
+    auto_threshold.calibrate_and_store(conn, reranker)
+    bar.empty()
     st.toast(f"Sample corpus loaded: {report.summary()}")
     st.rerun()
 
@@ -1410,12 +1427,21 @@ def main() -> None:
         return
 
     if chunk_count == 0:
-        st.info(
-            "Your library is empty. Attach PDF, DOCX, TXT or MD files with "
-            "the icon in the chat box below, or open **Documents** in the "
-            "sidebar to load the sample corpus (31 public-domain "
-            "regulations) and try Fineprint right away."
-        )
+        # An empty library is the first thing a new user sees, so it gets the
+        # same welcome screen as an empty chat rather than a lone banner. The
+        # sample corpus is not offered here: this app is for your own
+        # documents, and the corpus is an evaluation fixture that lives behind
+        # Documents in the sidebar for anyone who wants to try it quickly.
+        with st.container(key="emptydock"):
+            st.markdown(
+                '<div class="fp-hero"><b>Add a document to begin</b>'
+                "<span>Click the <b>+</b> in the message box below to attach "
+                "PDF, DOCX, TXT or MD files, or drop them straight onto it. "
+                "They are indexed on this machine and nothing leaves it."
+                "</span></div>",
+                unsafe_allow_html=True,
+            )
+
     else:
         show_examples = _library_is_sample_corpus_only(conn)
         if not turns:

@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import logging
 import sqlite3
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -67,17 +68,26 @@ def ingest_directory(
     embedder: Embedder,
     directory: Path | None = None,
     force: bool = False,
+    on_progress: Callable[[int, int, str], None] | None = None,
 ) -> IngestReport:
     """Ingest every supported document in a directory.
 
     Documents whose contents are unchanged since the last run are skipped unless
     force is set. A document that cannot be read is recorded in the report and
     does not stop the run.
+
+    Embedding a corpus on the CPU takes minutes, long enough that a caller with
+    a screen needs to say so. on_progress is called with (done, total, filename)
+    before each document, so an interface can draw a progress bar without this
+    module knowing anything about one.
     """
     directory = directory or config.EVAL_CORPUS_DIR
     report = IngestReport()
 
-    for path in loaders.discover_documents(directory):
+    paths = list(loaders.discover_documents(directory))
+    for position, path in enumerate(paths):
+        if on_progress is not None:
+            on_progress(position, len(paths), path.name)
         try:
             current_hash = loaders.file_hash(path)
             if not force and db.get_document_hash(conn, path.name) == current_hash:
@@ -93,6 +103,9 @@ def ingest_directory(
             conn.rollback()
             report.failed.append((path.name, str(error)))
             logger.warning("Failed to ingest %s: %s", path.name, error)
+
+    if on_progress is not None:
+        on_progress(len(paths), len(paths), "")
 
     db.rebuild_fts(conn)
     conn.commit()
